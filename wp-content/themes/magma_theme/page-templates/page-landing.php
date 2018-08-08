@@ -51,15 +51,41 @@ get_header();
             </div>
         </div>
 
+        <div class="land-second-block">
+            <div class="title">
+                <h2><span><?php the_field('second_block_title'); ?></span></h2>
+            </div>
+            <div class="land-second-block__images">
+                <div class="land-second-block__images-item">
+                    <div class="land-second-block__images-item-img-wrap">
+                        <img class="land-second-block__images-item-img" src="<?php the_field('second_block_img_1'); ?>">
+                    </div>
+                    <span class="land-second-block__images-item-text"><?php the_field('second_block_text_1'); ?></span>
+                </div>
+                <div class="land-second-block__images-item">
+                    <div class="land-second-block__images-item-img-wrap">
+                        <img class="land-second-block__images-item-img" src="<?php the_field('second_block_img_2'); ?>">
+                    </div>
+                    <span class="land-second-block__images-item-text"><?php the_field('second_block_text_2'); ?></span>
+                </div>
+                <div class="land-second-block__images-item">
+                    <div class="land-second-block__images-item-img-wrap">
+                        <img class="land-second-block__images-item-img" src="<?php the_field('second_block_img_3'); ?>">
+                    </div>
+                    <span class="land-second-block__images-item-text"><?php the_field('second_block_text_3'); ?></span>
+                </div>
+            </div>
+        </div>
+
 
         <!--.popular-goods-section-->
-        <section class="popular-goods-section slider-version-2">
+        <section class="popular-goods-section land-popular-goods-section slider-version-2">
             <div class="container">
                 <div class="title">
-                    <h2><span><?php the_field('block_3_title'); ?></span></h2>
+                    <span class="land-slider-title"><?php the_field('block_3_title'); ?></span>
                     <a target="<?= get_field('block_3_link')['target'] ?>"
                        href="<?= get_field('block_3_link')['url'] ?>"
-                       class="btn-new btn-new--2"><?= get_field('block_3_link')['title'] ?></a>
+                       class="btn-new land-btn-new btn-new--2"><?= get_field('block_3_link')['title'] ?></a>
                 </div>
 
                 <div class="default-shell to-price" id="slider-main-page-2">
@@ -79,10 +105,67 @@ get_header();
                                                     href="<?= $item['link']['url'] ?>"><?= $item['title_2'] ?></a></h3>
                                     </div>
 
+                                    <div class="land-block__slider-prices">
+                                        <div class="land-block__slider-prices-inner-wrapper">
+                                            <span class="land-block__slider-price1-title"><?= $item['price_1_text'] ?></span>
+                                            <span class="land-block__slider-price1"><?= $item['price_1'] ?></span>
+                                        </div>
+                                        <div class="land-block__slider-prices-inner-wrapper">
+                                            <span class="land-block__slider-price2-title"><?= $item['price_2_text'] ?></span>
+                                            <span class="land-block__slider-price2"><?= $item['price_2'] ?></span>
+                                        </div>
+                                    </div>
+
                                 </div>
-                                <div class="more-inform-product"><a target="<?= $item['link']['target'] ?>"
-                                                                    href="<?= $item['link']['url'] ?>"
-                                                                    class="btn">подробнее</a></div>
+                            </div>
+                            <!--End .view-box-->
+                        <?php }
+                    } ?>
+                </div>
+
+            </div>
+        </section>
+        <!--End .popular-goods-section-->
+
+        <!--.popular-goods-section-->
+        <section class="popular-goods-section slider-version-2">
+            <div class="container">
+                <div class="title">
+                    <span class="land-slider-title"><?php the_field('block_4_title'); ?></span>
+                    <a target="<?= get_field('block_4_link')['target'] ?>"
+                       href="<?= get_field('block_4_link')['url'] ?>"
+                       class="btn-new land-btn-new btn-new--2"><?= get_field('block_4_link')['title'] ?></a>
+                </div>
+
+                <div class="default-shell to-price" id="slider-main-page-3">
+                    <?php if (get_field('block_4_slider')) {
+                        foreach (get_field('block_4_slider') as $item) { ?>
+                            <!--.view-box-->
+                            <div class="view-box active">
+                                <div class="inset-box">
+                                    <div class="foto" style="background-image: url(<?= $item['img'] ?>)"><a
+                                                target="<?= $item['link']['target'] ?>"
+                                                href="<?= $item['link']['url'] ?>"></a></div>
+
+                                    <div class="name-goods"><?= $item['title_1'] ?></div>
+
+                                    <div class="title-goods"><h3><a
+                                                    target="<?= $item['link']['target'] ?>"
+                                                    href="<?= $item['link']['url'] ?>"><?= $item['title_2'] ?></a></h3>
+                                    </div>
+
+                                    <div class="land-block__slider-prices">
+                                        <div class="land-block__slider-prices-inner-wrapper">
+                                            <span class="land-block__slider-price1-title"><?= $item['price_1_text'] ?></span>
+                                            <span class="land-block__slider-price1"><?= $item['price_1'] ?></span>
+                                        </div>
+                                        <div class="land-block__slider-prices-inner-wrapper">
+                                            <span class="land-block__slider-price2-title"><?= $item['price_2_text'] ?></span>
+                                            <span class="land-block__slider-price2"><?= $item['price_2'] ?></span>
+                                        </div>
+                                    </div>
+
+                                </div>
                             </div>
                             <!--End .view-box-->
                         <?php }
