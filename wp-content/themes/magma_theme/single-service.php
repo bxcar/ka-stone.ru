@@ -1,7 +1,4 @@
 <?php
-/*
-* Template Name: Landing
-*/
 get_header();
 ?>
     <!--.breadcrumb-section-->
@@ -15,7 +12,8 @@ get_header();
 
 
     <div class="land-block container">
-<!--        <h2 class="land-block__title land-block__title-desktop">--><?php //the_field('main_title'); ?><!--</h2>-->
+        <!--        <h2 class="land-block__title land-block__title-desktop">-->
+        <?php //the_field('main_title'); ?><!--</h2>-->
         <div class="land-block__title-mob">
             <div class="title land-main-title">
                 <h2><span><?php the_field('main_title'); ?></span></h2>
@@ -183,24 +181,61 @@ get_header();
 
         <div class="land-block__bottom-part">
             <div class="land-block__bottom-part-top">
+                <div>
                     <span class="land-block__bottom-part-top-item"><?php the_field('block_5_string_1'); ?>
                         <span><?php the_field('block_5_string_1_price'); ?></span></span>
-                <span class="land-block__bottom-part-top-item"><?php the_field('block_5_string_2'); ?>
-                    <span><?php the_field('block_5_string_2_price'); ?></span></span>
-                <span class="land-block__bottom-part-top-item"><?php the_field('block_5_string_3'); ?>
-                    <span><?php the_field('block_5_string_3_price'); ?></span></span>
+                    <span class="land-block__bottom-part-top-item"><?php the_field('block_5_string_2'); ?>
+                        <span><?php the_field('block_5_string_2_price'); ?></span></span>
+                    <span class="land-block__bottom-part-top-item"><?php the_field('block_5_string_3'); ?>
+                        <span><?php the_field('block_5_string_3_price'); ?></span></span>
+                </div>
+
+
+
             </div>
             <div class="land-block__bottom-part-bottom">
-                <?php if (get_field('block_5_images')) {
-                    foreach (get_field('block_5_images') as $item) { ?>
-                        <div class="land-block__bottom-part-bottom-img">
-                            <img src="<?= $item['img'] ?>">
-                        </div>
-                    <?php }
+                <?php
+                $i = 1;
+                if (get_field('block_5_images')) {
+                    foreach (get_field('block_5_images') as $item) {
+                        if($i <= 4) { ?>
+                            <div class="land-block__bottom-part-bottom-img">
+                                <img src="<?= $item['img'] ?>">
+                            </div>
+                        <?php }?>
+                    <?php $i++;  }
+                } ?>
+            </div>
+
+            <div class="land-block__bottom-part-bottom land-block__bottom-part-bottom--hidden">
+                <?php
+                $i = 1;
+                if (get_field('block_5_images')) {
+                    foreach (get_field('block_5_images') as $item) {
+                        if($i > 4) { ?>
+                            <div class="land-block__bottom-part-bottom-img">
+                                <img src="<?= $item['img'] ?>">
+                            </div>
+                        <?php }?>
+                        <?php $i++;  }
                 } ?>
             </div>
         </div>
+
+        <div>
+            <a target="<?php//get_field('block_5_link')['target'] ?>"
+               href="#<?php //get_field('block_5_link')['url'] ?>"
+               class="btn-new land-btn-new btn-new--2 btn-new--load-more-img">Все изображения<?php //get_field('block_5_link')['title'] ?></a>
+        </div>
+
     </div>
+
+<script>
+    jQuery('.btn-new--load-more-img').click(function (e) {
+        e.preventDefault();
+        jQuery('.land-block__bottom-part-bottom--hidden').removeClass('land-block__bottom-part-bottom--hidden');
+    })
+</script>
 
 
 <?php get_footer(); ?>
